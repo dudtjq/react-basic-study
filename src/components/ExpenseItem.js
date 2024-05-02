@@ -8,7 +8,6 @@ const ExpenseItem = ({title, price, date}) => {
     return text.toString().padStart(2, '0');
   }
 
-
   // 날짜 포맷팅 변환 함수 정의
   const makeFormattedDate = () => {
     const year = date.getFullYear();
