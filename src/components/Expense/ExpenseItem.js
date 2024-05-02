@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
-import Card from './UI/Card';
+import Card from '../UI/Card';
 
 const ExpenseItem = ({ title, price, date }) => {
   // // 한자리 수를 두자리로 변환 해주는 함수

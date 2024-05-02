@@ -1,10 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import NoName from './NoName';
-import ExpenseItem from './components/ExpenseItem';
-import Expenses from './components/Expenses';
-import Hello from './Hello';
+import Expenses from './components/Expense/Expenses';
+import NewExpense from './components/NewExpense/NewExpense';
 
 function App() {
   const $h2 = <h2>반가워요~~~</h2>;
@@ -29,8 +26,15 @@ function App() {
     },
   ];
 
+  // ExpenseForm 에게 내려보낼 함수
+  const addExpenseHandler = (NewExpense) => {
+    console.log('App 컴포넌트에서 응답함');
+    console.log('newExpense : ', NewExpense);
+  };
+
   return (
     <>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </>
   );
