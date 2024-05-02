@@ -37,7 +37,17 @@ const ExpenseItem = ({ title, price, date }) => {
 
   const clickHandler = (e) => {
     // state로 관리하는 변수는 반드시 setter로만 변경해야 함
-    setItemTitle('메렁메렁~~');
+
+    setItemTitle((snapshot) => {
+      console.log('snapshot : ', snapshot);
+      // setter 함수의 매개값으로 콜백 함수를 선언 -> 콜백 함수의 매개값으로 현재 싱태 변수
+      // 값이 전달
+      // return 값이 변경될 상태값으로 지정
+      // return 값이 snapshot과 다를 경우에 리렌더링, 같을 경우 리렌더링 하지 않음
+      return '메렁메렁~';
+    });
+
+    //setItemTitle('메렁메렁~~');
   };
 
   return (
