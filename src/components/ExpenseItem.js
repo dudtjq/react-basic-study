@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
+import Card from './UI/Card';
 
-const ExpenseItem = ({title, price, date}) => {
-
+const ExpenseItem = ({ title, price, date }) => {
   // // 한자리 수를 두자리로 변환 해주는 함수
   // const make2digit = (text) => {
   //    return text.toString().padStart(2, '0');
@@ -19,18 +19,44 @@ const ExpenseItem = ({title, price, date}) => {
   // }
 
   // 숫자를 화폐 표기법으로 바꾸기
-  const formattedPirce = new Intl.NumberFormat('ko-KR',{ style: 'currency', currency: 'KRW' }).format(price)
+  const formattedPirce = new Intl.NumberFormat('ko-KR', {
+    style: 'currency',
+    currency: 'KRW',
+  }).format(price);
 
+  // let itemTitle = title;
+
+  // 값이 변경 되어 화면에 반영되어야 하는 값들은
+  // useState 훅을 통해 상태변수로 관리 해야 한다
+  //(훅 : React에서 직접 코드 작성없이 다양한 기능을 사용할수 있게 도와주는 라이브러리)
+
+  // useState (상태변수의 초기값) -> 배열을 리턴함
+  // 첫번째 요소는 관리할 상태값
+  // 두번째 요소는 상태값을 변경하는 setter 함수가 리턴됨
+  const [itemTitle, setItemTitle] = useState(title);
+
+  const clickHandler = (e) => {
+    // state로 관리하는 변수는 반드시 setter로만 변경해야 함
+    setItemTitle('메렁메렁~~');
+  };
 
   return (
-    <div className='expense-item'>
-    <ExpenseDate date={date} />
-    <div className='expense-item__description'>
-      <h2>{title}</h2>
-      <div className='expense-item__price'>{formattedPirce}원</div>
-    </div>
-  </div>
-  )
-}
+    <Card className="circle">
+      <div className="expense-item">
+        <ExpenseDate date={date} />
+        <div className="expense-item__description">
+          <h2>{itemTitle}</h2>
+          <div className="expense-item__price">{formattedPirce}원</div>
+        </div>
+      </div>
+      <button type="button" id="btn1" onClick={clickHandler}>
+        수정
+      </button>
+      <button type="button" id="btn2" onClick={clickHandler}>
+        삭제
+      </button>
+    </Card>
+  );
+};
 
-export default ExpenseItem
+export default ExpenseItem;

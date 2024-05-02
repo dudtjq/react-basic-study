@@ -4,9 +4,9 @@ import React from 'react';
 import NoName from './NoName';
 import ExpenseItem from './components/ExpenseItem';
 import Expenses from './components/Expenses';
+import Hello from './Hello';
 
 function App() {
-
   const $h2 = <h2>반가워요~~~</h2>;
 
   //지출 항목 객체 배열
@@ -20,7 +20,7 @@ function App() {
     {
       title: 'BBQ치킨',
       price: 20000,
-      date: new Date(2023, 5 - 1 , 21),
+      date: new Date(2023, 5 - 1, 21),
     },
     {
       title: '도미노피자',
@@ -30,7 +30,6 @@ function App() {
   ];
 
   return (
-
     <>
       <Expenses items={expenses} />
     </>
