@@ -28,17 +28,9 @@ const CouresInput = ({ onAdd }) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <div className="form-control">
+      <div className={`form-control ${!isVaild ? 'invalid' : ''}`}>
         <label>나의 목표</label>
-        <input
-          style={{
-            background: isVaild ? 'transparent' : 'salmon',
-            borderColor: isVaild ? 'black' : 'red',
-          }}
-          type="text"
-          onChange={textChangeHandler}
-          value={enteredText}
-        />
+        <input type="text" onChange={textChangeHandler} value={enteredText} />
       </div>
       <Button type="submit">목표 추가하기</Button>
     </form>
