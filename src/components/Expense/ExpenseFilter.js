@@ -1,12 +1,12 @@
 import React from 'react';
 import './ExpenseFilter.css';
 
-const ExpenseFilter = ({ onchangeFilter }) => {
+const ExpenseFilter = ({ onChangeFilter }) => {
   const dropdownChangeHandler = (e) => {
     // selected된 year의 값을 Expenses.js에서 사용할 수 있도록
-    // 올려 보내 보기
+    // 올려보내 보세요.
     const selectedYear = e.target.value;
-    onchangeFilter(selectedYear);
+    onChangeFilter(selectedYear);
   };
 
   return (

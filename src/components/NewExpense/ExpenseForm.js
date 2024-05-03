@@ -9,8 +9,8 @@ const ExpenseForm = ({ onSaveExpense }) => {
   });
 
   const titleChangeHandler = (e) => {
-    // userInput이 객체 형태이기 때문에 기존값은 유지하면서, 이벤트가 발생한 입력창의
-    // 값만 변경하는 로직
+    // userInput이 객체 형태이기 때문에 기존값은 유지하면서, 이벤트가 발생한 입력창의 값만
+    // 변경하는 로직
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
@@ -42,8 +42,7 @@ const ExpenseForm = ({ onSaveExpense }) => {
       date: new Date(userInput.date),
     };
 
-    onSaveExpense(newExpense); // App.js가 내려준 함수를 호출하면서, 올리고자 하는 데이
-    //터를 매개값으로 전달
+    onSaveExpense(newExpense); // App.js가 내려준 함수를 호출하면서, 올리고자 하는 데이터를 매개값으로 전달.
 
     // 입력창 리셋
     setUserInput({
