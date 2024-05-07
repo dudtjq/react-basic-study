@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ErrorModal.module.css';
 import Card from '../Card';
 import Button from '../Button/Button';
+
 // portal 기능을 사용하기 위한 import
 import ReactDOM from 'react-dom';
 import Portal from '../Portal/Portal';
@@ -26,9 +27,9 @@ const ModalOverlay = ({ title, message, onConfirm }) => {
   );
 };
 
-// Modal을 사용하는 쪽에서 모달 제목과 메세지가 props로 전달 될 것이다
-//onCofirm -> AddUsers쪽에서 상태관리하고 있는 모달 노출 여부를 제어하는 함수
-const ErrorMadal = ({ title, message, onConfirm }) => {
+// Modal을 사용하는 쪽에서 모달 제목과 메세지가 props로 전달될 것이다.
+// onConfirm -> AddUsers쪽에서 상태관리하고 있는 모달 노출 여부를 제어하는 함수.
+const ErrorModal = ({ title, message, onConfirm }) => {
   return (
     <>
       <Portal destId="backdrop-root">
@@ -42,4 +43,4 @@ const ErrorMadal = ({ title, message, onConfirm }) => {
   );
 };
 
-export default ErrorMadal;
+export default ErrorModal;
