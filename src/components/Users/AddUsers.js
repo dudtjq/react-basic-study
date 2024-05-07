@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Button from '../UI/Button/Button';
 import styles from './AddUser.module.css';
 import Card from '../UI/Card';
 import ErrorMadal from '../UI/Modal/ErrorMadal';
 
 const AddUsers = () => {
-  const [userValue, setUserValue] = useState({
-    userName: '',
-    age: '',
-  });
-
   //에러 상태 관리
   const [error, setError] = useState(null);
 
-  const userNameChangeHandler = (e) => {
-    setUserValue((prevUserValue) => {
-      return {
-        ...prevUserValue,
-        userName: e.target.value,
-      };
-    });
-  };
-
-  const ageChangeHandler = (e) => {
-    setUserValue((prevUserValue) => {
-      return {
-        ...prevUserValue,
-        age: e.target.value,
-      };
-    });
-  };
+  //useRef로 기억된 input 요소 가져오기
+  const nameInput = useRef();
+  const ageInput = useRef();
 
   const userSubmitHandler = (e) => {
     e.preventDefault();
 
-    if (userValue.userName.trim() === '' || userValue.age.trim() === '') {
+    const username = nameInput.current.value;
+    const age = ageInput.current.value;
+
+    console.log(nameInput.current);
+
+    if (username.trim() === '' || age.trim() === '') {
       setError({
         title: '유효하지 않은 입력값',
         message: '입력값은 공백으로 작성하면 안됩니다.',
@@ -42,7 +28,7 @@ const AddUsers = () => {
       return;
     }
 
-    if (+userValue.age < 1) {
+    if (age < 1) {
       setError({
         title: '유효하지 않는 나이의 범위',
         message: '나이는 1이상의 숫자로 작성해 주세요',
@@ -50,12 +36,8 @@ const AddUsers = () => {
       return;
     }
 
-    console.log(userValue);
-
-    setUserValue({
-      userName: '',
-      age: '',
-    });
+    nameInput.current.value = '';
+    ageInput.current.value = '';
   };
 
   return (
@@ -70,19 +52,9 @@ const AddUsers = () => {
       <Card className={styles.input}>
         <form onSubmit={userSubmitHandler}>
           <label htmlFor="username">이름</label>
-          <input
-            id="username"
-            type="text"
-            onChange={userNameChangeHandler}
-            value={userValue.userName}
-          />
+          <input id="username" type="text" ref={nameInput} />
           <label htmlFor="age">나이</label>
-          <input
-            id="age"
-            type="number"
-            onChange={ageChangeHandler}
-            value={userValue.age}
-          />
+          <input id="age" type="number" ref={ageInput} />
           <Button type="submit">가입하기</Button>
         </form>
       </Card>

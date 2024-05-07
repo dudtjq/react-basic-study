@@ -4,6 +4,7 @@ import Card from '../Card';
 import Button from '../Button/Button';
 // portal 기능을 사용하기 위한 import
 import ReactDOM from 'react-dom';
+import Portal from '../Portal/Portal';
 
 const BackDrop = ({ onConfirm }) => {
   return <div className={styles.backdrop} onClick={onConfirm} />;
@@ -30,15 +31,13 @@ const ModalOverlay = ({ title, message, onConfirm }) => {
 const ErrorMadal = ({ title, message, onConfirm }) => {
   return (
     <>
-      {ReactDOM.createPortal(
-        <ModalOverlay title={title} message={message} onConfirm={onConfirm} />,
-        document.getElementById('overlay-root'),
-      )}
+      <Portal destId="backdrop-root">
+        <BackDrop onConfirm={onConfirm} />
+      </Portal>
 
-      {ReactDOM.createPortal(
-        <BackDrop onConfirm={onConfirm} />,
-        document.getElementById('backdrop-root'),
-      )}
+      <Portal destId="overlay-root">
+        <ModalOverlay title={title} message={message} onConfirm={onConfirm} />
+      </Portal>
     </>
   );
 };
