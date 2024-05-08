@@ -132,7 +132,7 @@ const Login = () => {
         <div
           className={`${styles.control} ${!emailIsValid ? styles.invalid : ''}`}
         >
-          <label htmlFor="email">E-Mail</label>
+          <label htmlFor="email"></label>
           <Input
             type="email"
             id="email"
@@ -145,7 +145,7 @@ const Login = () => {
         <div
           className={`${styles.control} ${!pwIsValid ? styles.invalid : ''}`}
         >
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
           <Input
             type="password"
             id="password"
