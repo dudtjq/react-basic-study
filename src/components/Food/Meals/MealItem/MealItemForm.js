@@ -5,7 +5,7 @@ import Button from '../../../UI/Button/Button';
 
 const MealItemForm = ({ id, onAddToCart }) => {
   // 수량의 상태를 관리 하는 변수
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(1);
 
   // 수량이 변경될 때 마다 발동하는 함수
   const amountHandler = (amt) => {
